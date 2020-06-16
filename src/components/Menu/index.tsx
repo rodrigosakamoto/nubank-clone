@@ -19,7 +19,14 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ translateY }) => {
   return (
-    <Container>
+    <Container
+      style={{
+        opacity: translateY.interpolate({
+          inputRange: [0, 150],
+          outputRange: [0, 1],
+        }),
+      }}
+    >
       <Code>
         <QRCode value="https://rocketseat.com.br" size={80} color="#8b10ae" />
       </Code>
@@ -46,7 +53,7 @@ const Menu: React.FC<Props> = ({ translateY }) => {
         </NavItem>
       </Nav>
 
-      <SignOutButton onPress={() => {}}>
+      <SignOutButton>
         <SignOutButtonText>SAIR DO APP</SignOutButtonText>
       </SignOutButton>
     </Container>
